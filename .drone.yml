@@ -4,11 +4,6 @@ name: default
 steps:
   - name: build
     image: centos:centos7.9.2009
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-      - name: data
-        path: /data
     commands:
     - "docker build -t centos7/centos:1.3 ."
   - name: test
@@ -28,10 +23,3 @@ steps:
       status:
       - success
       - failure
-volumes:
-  - name: docker_sock
-    host:
-      path: /var/run/docker.sock
-  - name: data
-    host:
-      path: /var/lib/docker
