@@ -5,6 +5,11 @@ steps:
 
   - name: build
     image: docker:dind
+    volumes:
+      - name: docker_sock
+        path: /var/run/docker.sock
+      - name: data
+        path: /data
     commands:
     - "apk add --no-cache git"
     - "git clone https://rujak.id/saiful/vagrant.git"
@@ -30,3 +35,10 @@ steps:
       status:
       - success
       - failure
+volumes:
+  - name: docker_sock
+    host:
+      path: /var/run/docker.sock
+  - name: data
+    host:
+      path: /var/lib/docker
