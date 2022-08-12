@@ -4,12 +4,7 @@ name: default
 steps:
 
   - name: build
-    image: docker
-    volumes:
-      - name: docker_sock
-        path: /var/run/docker.sock
-      - name: data
-        path: /data
+    image: docker:dind
     commands:
     - "apk add --no-cache git"
     - "git clone ssh://git@rujak.id/saiful/vagrant.git"
@@ -35,11 +30,3 @@ steps:
       status:
       - success
       - failure
-
-volumes:
-  - name: docker_sock
-    host:
-      path: /var/run/docker.sock
-  - name: data
-    host:
-      path: /var/lib/docker
