@@ -7,7 +7,7 @@ steps:
     image: docker:dind
     commands:
     - "apk add --no-cache git"
-    - "git clone ssh://git@rujak.id/saiful/vagrant.git"
+    - "git clone https://rujak.id/saiful/vagrant.git"
     - "cd vagrant"
     - "docker build -t vagrant ."
 
